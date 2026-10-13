@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+<title>The Last Bell Curse</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a0b2e">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Last Bell Curse">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icono-192.png">
+<link rel="stylesheet" href="fonts.css">
+<script>
+(() => {
+  const app = "last-bell-curse", cola = [];
+  window.goatcounter = window.goatcounter || {};
+  let intentos = 0;
+  function vaciar() {
+    if (!window.goatcounter.count) { if (intentos++ < 30) setTimeout(vaciar, 1000); return; }
+    while (cola.length) { const ev = cola.shift(); try { window.goatcounter.count({ path: app + " · " + ev, title: ev, event: true }); } catch {} }
+  }
+  window.contar = ev => { cola.push(ev); vaciar(); };
+  const instalada = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  window.contar(instalada ? "abierta como app instalada" : "abierta en el navegador");
+})();
+</script>
+<script data-goatcounter="https://himerche.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+<style>
+:root { --bg:#120720; --panel:#1f0d36; --line:rgba(232,183,90,.4); --gold:#e8b75a; --gold2:#fff1b8; --orange:#ff8a1f;
+  --ink:#f7efff; --muted:#c7b3e0; --f-title:'Creepster',fantasy,cursive; --f-deco:'Cinzel Decorative',Georgia,serif;
+  --f-body:'Fredoka','Trebuchet MS','Segoe UI',sans-serif; color-scheme:dark;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 50% 0%, #2c1250, var(--bg) 60%) fixed; color: var(--ink);
+  font: 17px/1.5 var(--f-body); padding-inline: 16px; }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 32px 48px; display: grid; gap: 22px; }
+h1 { font-family: var(--f-title); font-weight: 400; color: var(--orange); font-size: clamp(42px, 11vw, 76px); line-height: 1; margin: 0;
+  text-align: center; text-shadow: 0 3px 0 #5a1f00, 0 0 24px rgba(255,138,31,.5); }
+.sub { text-align: center; color: var(--gold); font-family: var(--f-deco); margin: -8px 0 0; letter-spacing: .04em; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
+.lock form { display: grid; gap: 12px; max-width: 380px; margin: 0 auto; text-align: center; }
+input[type=password] { font: 600 18px var(--f-body); padding: 14px; border-radius: 12px; border: 1px solid var(--line);
+  background: #12071f; color: var(--ink); text-align: center; letter-spacing: .08em; }
+label.rec { display: flex; gap: 8px; justify-content: center; align-items: center; color: var(--muted); font-size: 15px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 600 18px var(--f-body); padding: 14px 20px;
+  border-radius: 999px; border: 2px solid var(--gold); background: linear-gradient(180deg,#3a1760,#1d0b33); color: var(--gold2);
+  cursor: pointer; text-decoration: none; min-height: 52px; }
+.btn.big { background: linear-gradient(180deg,#ff9f3d,#d45a00); color: #2a0d00; border-color: #ffd38a; font-size: 21px; width: 100%; }
+.btn:disabled { opacity: .55; cursor: wait; }
+.btn:focus-visible { outline: 3px solid var(--gold2); outline-offset: 2px; }
+.err { color: #ff8a95; min-height: 1.4em; }
+.muted { color: var(--muted); font-size: 15px; }
+h2 { font-family: var(--f-deco); color: var(--gold); font-size: 21px; margin: 0 0 10px; }
+.docs { display: grid; gap: 12px; }
+.doc { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; align-items: center; padding: 14px; border-radius: 14px;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(232,183,90,.2); }
+.doc b { font-size: 18px; } .doc p { margin: 0; grid-column: 1; } .doc .btn { grid-row: 1 / span 2; grid-column: 2; font-size: 16px; padding: 10px 16px; min-height: 46px; }
+@media (max-width: 520px) { .doc { grid-template-columns: 1fr; } .doc .btn { grid-row: auto; grid-column: 1; width: 100%; } }
+ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+.codes { font-variant-numeric: tabular-nums; }
+.out { text-align: center; } .out button { background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; font: inherit; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Last Bell Curse</h1>
+  <p class="sub">Escape room de Halloween · 4–8 jugadores · 6–16 años</p>
+
+  <div class="card lock" id="lock" hidden>
+    <form id="lockForm" autocomplete="off">
+      <p>Escribe la contraseña para abrir el pack.</p>
+      <input id="pw" type="password" autocapitalize="none" spellcheck="false" placeholder="xxxx-xxxx-xxxx" aria-label="Contraseña">
+      <label class="rec"><input id="remember" type="checkbox" checked> Recordar en este dispositivo</label>
+      <button class="btn big" type="submit" id="unlock">Entrar</button>
+      <div class="err" id="err" role="alert"></div>
+    </form>
+  </div>
+
+  <div id="pack" hidden>
+    <div class="card" style="display:grid;gap:12px">
+      <h2>📺 La pantalla del juego</h2>
+      <p class="muted" style="margin:0">El Magic Mirror se proyecta en la pizarra digital, la tele o una tablet: intro de Morgana, cuenta atrás hasta la última campana, códigos, pistas y final. Panel de la profe: tecla <b>G</b> o mantener 2 s la esquina superior izquierda.</p>
+      <a class="btn big" href="mirror.html" id="goMirror">🔮 Abrir el Magic Mirror</a>
+    </div>
+    <div class="card" style="margin-top:22px">
+      <h2>📚 Documentos para descargar</h2>
+      <div class="docs" id="docs"></div>
+      <div class="err" id="derr" role="alert"></div>
+    </div>
+    <div class="card" style="margin-top:22px">
+      <h2>🕯 Cómo empezar</h2>
+      <ol>
+        <li>Lee la <b>guía del game master</b> (planos, guion de Wanda, pistas y soluciones).</li>
+        <li>Compra el material con la <b>lista de la compra</b> (pack recomendado ≈ 69 €).</li>
+        <li>Imprime los <b>imprimibles</b>; la pág. 2 dice cuántas copias y dónde va cada cosa.</li>
+        <li>Prueba el filtro rojo y la tinta UV en tu papel antes del día.</li>
+        <li>El día del juego: abre el Magic Mirror, pulsa <b>G</b> y pon en «Last bell at» la hora de fin de clase (mejor 5 min antes).</li>
+      </ol>
+      <p class="muted">Instalar como app: en Android, menú ⋮ → «Instalar aplicación»; en iPhone/iPad, Compartir → «Añadir a pantalla de inicio»; en el ordenador, el icono de instalar de la barra de direcciones. Una vez abierta con conexión, funciona sin internet.</p>
+    </div>
+    <p class="out"><button type="button" id="logout">Cerrar sesión en este dispositivo</button></p>
+  </div>
+</div>
+<script>
+const PWKEY = "lastbell-pw";
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+let _key = null;
+async function clave(pw) {
+  const meta = await (await fetch("meta.json", { cache: "no-cache" })).json();
+  const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey({ name: "PBKDF2", salt: b64(meta.salt), iterations: meta.iter, hash: "SHA-256" },
+    base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+}
+async function abrir(nombre, key) {
+  const buf = new Uint8Array(await (await fetch(nombre)).arrayBuffer());
+  return crypto.subtle.decrypt({ name: "AES-GCM", iv: buf.slice(0, 12) }, key || _key, buf.slice(12));
+}
+function pwGuardada() { try { return localStorage.getItem(PWKEY) || sessionStorage.getItem(PWKEY); } catch { return null; } }
+function guardarPw(pw, recordar) { try { (recordar ? localStorage : sessionStorage).setItem(PWKEY, pw); } catch {} }
+const cuenta = ev => { try { window.contar && window.contar(ev); } catch {} };
+
+const DOCS = [{"id": "guia", "nombre": "The Last Bell Curse - Guia del Game Master.pdf", "titulo": "Guía del game master", "desc": "Historia, planos, guion de Wanda, pistas, checklist de montaje y soluciones.", "bytes": 4293536}, {"id": "imprimibles", "nombre": "The Last Bell Curse - Imprimibles.pdf", "titulo": "Imprimibles", "desc": "Todo lo que se imprime: carta, póster, pociones, retratos, cifrado, recetas, insignias y diplomas.", "bytes": 5851236}, {"id": "compras", "nombre": "The Last Bell Curse - Lista de compra.pdf", "titulo": "Lista de la compra", "desc": "Candados, luz UV y ambientación, con enlaces, precios y plan B casero.", "bytes": 664401}];
+function tam(n) { return (n / 1048576).toFixed(1).replace(".", ",") + " MB"; }
+function pintarDocs() {
+  const box = document.getElementById("docs"); box.innerHTML = "";
+  DOCS.forEach(d => {
+    const el = document.createElement("div"); el.className = "doc";
+    el.innerHTML = '<b></b><p class="muted"></p><button class="btn" type="button">⬇ Descargar PDF</button>';
+    el.querySelector("b").textContent = d.titulo;
+    el.querySelector("p").textContent = d.desc + " (" + tam(d.bytes) + ")";
+    const btn = el.querySelector("button");
+    btn.addEventListener("click", async () => {
+      const err = document.getElementById("derr"); err.textContent = ""; btn.disabled = true; btn.textContent = "Preparando…";
+      try {
+        const plain = await abrir(d.id + ".bin");
+        const url = URL.createObjectURL(new Blob([plain], { type: "application/pdf" }));
+        const a = document.createElement("a"); a.href = url; a.download = d.nombre; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 60000); cuenta("descarga " + d.id);
+      } catch { err.textContent = "No se ha podido preparar el PDF. Comprueba la conexión y vuelve a intentarlo."; }
+      btn.disabled = false; btn.textContent = "⬇ Descargar PDF";
+    });
+    box.appendChild(el);
+  });
+}
+async function entrar(pw, recordar) {
+  const key = await clave(pw);
+  await abrir("comprobar.bin", key);   // falla si la contraseña no es correcta
+  _key = key; if (recordar !== null) guardarPw(pw, recordar);
+  document.getElementById("lock").hidden = true; document.getElementById("pack").hidden = false; pintarDocs();
+}
+document.getElementById("lockForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const err = document.getElementById("err"), btn = document.getElementById("unlock"), pw = document.getElementById("pw").value.trim();
+  err.textContent = ""; btn.disabled = true; btn.textContent = "Abriendo…";
+  try { await entrar(pw, document.getElementById("remember").checked); cuenta("entrada con contraseña"); }
+  catch { err.textContent = "Contraseña incorrecta"; cuenta("contraseña incorrecta"); }
+  btn.disabled = false; btn.textContent = "Entrar";
+});
+document.getElementById("goMirror").addEventListener("click", () => cuenta("abrir magic mirror"));
+document.getElementById("logout").addEventListener("click", () => { try { localStorage.removeItem(PWKEY); sessionStorage.removeItem(PWKEY); } catch {} location.reload(); });
+(async () => {
+  const saved = pwGuardada();
+  if (saved) { try { await entrar(saved, null); cuenta("entrada recordada"); return; } catch {} }
+  document.getElementById("lock").hidden = false;
+})();
+if ("serviceWorker" in navigator) {
+  addEventListener("load", () => navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then(r => r.update()));
+}
+</script>
+</body>
+</html>
