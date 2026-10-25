@@ -96,9 +96,9 @@ ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
     <div class="card" style="margin-top:22px">
       <h2>🕯 Cómo empezar</h2>
       <ol>
-        <li>Lee la <b>guía del game master</b> (planos, guion de Wanda, pistas y soluciones).</li>
-        <li>Compra el material con la <b>lista de la compra</b> (pack recomendado ≈ 69 €).</li>
-        <li>Imprime los <b>imprimibles</b>; la pág. 2 dice cuántas copias y dónde va cada cosa.</li>
+        <li>Empieza por <b>«Cómo funciona»</b> (8 págs.) y el <b>croquis</b>; para los detalles, la <b>guía del game master</b>.</li>
+        <li>Compra el material con la <b>lista de la compra</b> (solo lo marcado BELL es de este juego).</li>
+        <li>Imprime los <b>imprimibles</b> (la pág. 2 dice cuántas copias), los <b>frascos de celofán</b> y las <b>huellas</b>.</li>
         <li>Prueba el filtro rojo y la tinta UV en tu papel antes del día.</li>
         <li>El día del juego: abre el Magic Mirror, pulsa <b>G</b> y pon en «Last bell at» la hora de fin de clase (mejor 5 min antes).</li>
       </ol>
@@ -125,7 +125,7 @@ function pwGuardada() { try { return localStorage.getItem(PWKEY) || sessionStora
 function guardarPw(pw, recordar) { try { (recordar ? localStorage : sessionStorage).setItem(PWKEY, pw); } catch {} }
 const cuenta = ev => { try { window.contar && window.contar(ev); } catch {} };
 
-const DOCS = [{"id": "guia", "nombre": "The Last Bell Curse - Guia del Game Master.pdf", "titulo": "Guía del game master", "desc": "Historia, planos, guion de Wanda, pistas, checklist de montaje y soluciones.", "bytes": 4293807}, {"id": "imprimibles", "nombre": "The Last Bell Curse - Imprimibles.pdf", "titulo": "Imprimibles", "desc": "Todo lo que se imprime: carta, póster, pociones, retratos, cifrado, recetas, insignias y diplomas.", "bytes": 5851236}, {"id": "compras", "nombre": "The Last Bell Curse - Lista de compra.pdf", "titulo": "Lista de la compra", "desc": "Candados, luz UV y ambientación, con enlaces, precios y plan B casero.", "bytes": 664401}];
+const DOCS = [{"id": "manual", "nombre": "The Last Bell Curse - Como funciona.pdf", "titulo": "Cómo funciona (empieza aquí)", "desc": "Resumen de 8 páginas: qué hacen los alumnos paso a paso, con fotos del material.", "bytes": 6283675}, {"id": "croquis", "nombre": "The Last Bell Curse - Croquis de colocacion.pdf", "titulo": "Croquis de colocación", "desc": "Dónde va cada cosa en las dos clases y el pasillo, y en qué orden montarlo.", "bytes": 924858}, {"id": "guia", "nombre": "The Last Bell Curse - Guia del Game Master.pdf", "titulo": "Guía del game master", "desc": "Historia, planos, guion de Wanda, pistas, checklist de montaje y soluciones.", "bytes": 4302678}, {"id": "imprimibles", "nombre": "The Last Bell Curse - Imprimibles.pdf", "titulo": "Imprimibles", "desc": "Todo lo que se imprime: carta, póster, etiquetas de pociones, retratos, cifrado, recetas, insignias y diplomas.", "bytes": 5851236}, {"id": "frascos", "nombre": "The Last Bell Curse - Frascos de celofan (P2).pdf", "titulo": "Frascos de celofán (prueba 2)", "desc": "Los frascos mágicos recortables con ventana de celofán y la Mixing Zone. Se imprimen además de los imprimibles.", "bytes": 1117524}, {"id": "huellas", "nombre": "The Last Bell Curse - Plantilla huellas de fantasma.pdf", "titulo": "Huellas de fantasma", "desc": "12 huellas para recortar y repasar con rotulador UV: el camino del pasillo hasta la cripta.", "bytes": 655049}, {"id": "compras", "nombre": "Lista de compra - escape rooms.pdf", "titulo": "Lista de la compra", "desc": "Candados, luz UV, celofán y ambientación, por tiendas, con precios y plan B casero.", "bytes": 932819}];
 function tam(n) { return (n / 1048576).toFixed(1).replace(".", ",") + " MB"; }
 function pintarDocs() {
   const box = document.getElementById("docs"); box.innerHTML = "";
