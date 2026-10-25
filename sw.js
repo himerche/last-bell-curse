@@ -1,5 +1,5 @@
 // Con conexión: siempre la última versión. Sin conexión: la copia guardada.
-const CACHE = "lastbell-b2e8d20e06";
+const CACHE = "lastbell-46c8fbb3ff";
 const FILES = ["./", "app.bin", "apple-touch-icon.png", "compras.bin", "comprobar.bin", "croquis.bin", "fonts.css", "fonts/f1.woff2", "fonts/f10.woff2", "fonts/f11.woff2", "fonts/f2.woff2", "fonts/f3.woff2", "fonts/f4.woff2", "fonts/f5.woff2", "fonts/f6.woff2", "fonts/f7.woff2", "fonts/f8.woff2", "fonts/f9.woff2", "frascos.bin", "guia.bin", "huellas.bin", "icono-192.png", "icono-512-maskable.png", "icono-512.png", "imprimibles.bin", "index.html", "manifest.webmanifest", "manual.bin", "meta.json", "mirror.html"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE)
